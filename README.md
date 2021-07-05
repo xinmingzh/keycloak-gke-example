@@ -1,12 +1,10 @@
-# Keycloak
-
-## Deployment
-
-Deployment of keycloak on GKE mainly followed the guide by piotr szybicki
+# Keycloak Deployment
+Deployment of keycloak on GKE. This tutorial mainly followed the guide by piotr szybicki,
+adding on details that are missing in the original guide.
 
 [Medium - Deploy Keycloak to Kubernetes cluster on GCP (piotr szybicki)](https://medium.com/12-developer-labors/deploy-keycloak-to-kubernetees-cluster-on-gcp-9a1afa0984f2)
 
-### Setup Network
+## Setup Network
 
 1. Define env vars
 ```commandline
@@ -14,10 +12,9 @@ export REGION=asia-east1
 export ZONE=asia-east1-a
 export VPC=auth-network
 export SUBNET=keycloak-subnet
-export GCP_PROJECT=caper-adhoc-playground
+export GCP_PROJECT=<YOUR-GCP-PROJECT>
 export CLUSTER=keycloak-cluster
 export DB_INSTANCE=keycloak-sql
-
 ```
 2. Create a VPC
 ```commandline
@@ -56,7 +53,7 @@ gcloud compute networks subnets create $SUBNET \
     --enable-private-ip-google-access
 ```
 
-### Setup Service Account
+## Setup Service Account
 
 6. Create service account
 ```commandline
@@ -83,7 +80,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
     --role roles/cloudsql.client
 ```
 
-### Setup DB
+## Setup DB
 10. Create DB instance
 
 [Medium - Deploy Keycloak to Kubernetes cluster on GCP (piotr szybicki)](https://medium.com/12-developer-labors/deploy-keycloak-to-kubernetees-cluster-on-gcp-9a1afa0984f2)
@@ -91,7 +88,7 @@ gcloud projects add-iam-policy-binding $GCP_PROJECT \
 follow guide to create db instance
 ```
 
-### Setup GKE
+## Setup GKE
 11. Create kubernetes cluster
 ```commandline
 gcloud container clusters create $CLUSTER \
@@ -152,7 +149,7 @@ kubectl create rolebinding default-viewer \
 
 18. Configure variables in keycloak-deployment.yaml
 
-### Deploy Keycloak
+## Deploy Keycloak
 
 19. Create the deployment
 ```commandline
