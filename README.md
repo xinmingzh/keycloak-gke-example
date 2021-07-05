@@ -46,7 +46,7 @@ gcloud compute firewall-rules create allow-connect-to-db \
 5. Create a subnet for the cluster
 ```commandline
 gcloud compute networks subnets create $SUBNET \
-    --network=$VPC \
+    --network $VPC \
     --range=10.2.0.0/16 \
     --region $REGION \
     --enable-flow-logs \
@@ -94,8 +94,8 @@ follow guide to create db instance
 gcloud container clusters create $CLUSTER \
     --num-nodes=3 \
     --machine-type=e2-medium \
-    --network=$VPC \
-    --subnetwork=$SUBNET \
+    --network $VPC \
+    --subnetwork $SUBNET \
     --zone $ZONE \
     --enable-autoscaling \
     --max-nodes=3 \
