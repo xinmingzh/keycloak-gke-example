@@ -30,7 +30,7 @@ gcloud beta compute addresses create mysql-range \
     --purpose=VPC_PEERING \
     --addresses=10.1.0.0 \
     --prefix-length=16 \
-    --network=$VPC
+    --network $VPC
 ```
 
 4. Add the firewall rule
